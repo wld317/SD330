@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>	Refrigerator </title>
+	</head>
+
+	
+	<style>
+	
+	body {
+		background-color: lightblue;
+		color: black; 
+    }
+	div {
+		border: solid black;
+		border-width: 10x;
+		padding: 2px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		width: "400";
+		float: left;
+	}
+	.fullWidth {
+		width: 100%;
+	}
+
+
+	</style>
+	
+	<script>
+		
+		function doStartClock() 
+		{
+			setInterval(doClockTick, 1000);
+			document.getElementById('button1').style.backgroundColor="red";
+
+		}
+		
+		function doClockTick(){
+			var currentDate = new Date();
+			var hours = currentDate.getHours();
+			var mins = currentDate.getMinutes();
+			var secs = currentDate.getSeconds();
+			var timeString = hours+":"+mins+":"+secs;
+			
+			var outputElement = document.getElementById("timePar");
+			outputElement.textContent=timeString;
+		}
+		
+		function button1(){
+			but1 = document.getElementById("button1");
+			if (but1.value == "On") {
+				but1.value = "Off";
+				document.getElementById('button1').style.backgroundColor="green";
+			}
+			else {
+					but1.value = "On";
+					document.getElementById('button1').style.backgroundColor="red";
+			}
+		}	
+		
+		
+		function button2(){
+			var pic = document.getElementById('pic');
+			but2 = document.getElementById("button2");
+			if (but2.value == "Open Fridge") {
+				but2.value = "Close Fridge";
+				pic.src = "https://www.cnet.com/a/img/resize/1fd0787e6e771b9fd73d6132e4736f07607defde/hub/2017/10/12/4d1e9d85-11e9-4c32-a59b-2fdfdd459553/lg-lfcs25426d-refrigerator-product-photos-6.jpg?auto=webp&fit=crop&height=675&width=1200";
+			}
+			else {
+					but2.value = "Open Fridge";
+					pic.src = "https://image-us.samsung.com/SamsungUS/home/home-appliances/refrigerators/french-doors/pdp/RF20HFENBSR/01_Refrigerator_French-Door_RF20HFENBSR_Front_Closed_Silver.jpg?$product-details-jpg$";
+			}
+		}
+		
+		function button3(){
+			var screen = document.getElementById('screen');
+			but3 = document.getElementById("button3");
+			if (but3.value == "Google") {
+				but3.value = "Netflix";
+				screen.src = "https://lh3.googleusercontent.com/8cj2t0NPTyvyqZIAGOwIPvUtthyQElUJUPi1WkQkbCxvp5nkIQz8yu2My5I-W8c_D0GUnkUVq-wmNSbKR_v5XCC0SWcHfVtbmz6IEA=w512-l90-sg-rj-c0xffffff";
+			}
+			else {
+					but3.value = "Google";
+					screen.src = "https://upload.wikimedia.org/wikipedia/en/f/f4/Netflix_-_English.jpg";
+			}
+		}
+		
+	</script>
+
+	
+<body onload="doStartClock();">
+	
+	
+	
+        <div id="div1">
+			<img class="trans" id="pic" src="https://image-us.samsung.com/SamsungUS/home/home-appliances/refrigerators/french-doors/pdp/RF20HFENBSR/01_Refrigerator_French-Door_RF20HFENBSR_Front_Closed_Silver.jpg?$product-details-jpg$" alt="" width="400" height="300"/>			
+       </div>
+		
+        <div id="div2">
+			<img class="trans" id="screen" src="https://lh3.googleusercontent.com/8cj2t0NPTyvyqZIAGOwIPvUtthyQElUJUPi1WkQkbCxvp5nkIQz8yu2My5I-W8c_D0GUnkUVq-wmNSbKR_v5XCC0SWcHfVtbmz6IEA=w512-l90-sg-rj-c0xffffff"			
+			id="image1" width=300px height=300px>
+       </div>
+		
+		<p style="clear:left;">
+		
+        <div id="div3">
+			<p>|	39° F	|</p>
+
+       </div>
+
+        <div id="div4">
+			<p id="timePar" style="font-size:1em; font-family: 'Courier New', Courier, monospace; text-align: center;">00:00:00</p>
+
+
+       </div>
+		
+
+	   		<p style="clear:left;">
+
+	   
+		<div id="buttons" class="fullWidth">
+			<input type=button onclick="button1()" id="button1" value="On" background-color:"green">
+			<input type=button onclick="button2()" id="button2" value="Open Fridge">
+			<input type=button onclick="button3()" id="button3" value="Netflix">
+       </div>
+		
+		
+		
+	<footer>
+			<hr>
+			<small> &copy; W. DeTorres October 16, 2023 </small>
+	</footer>
+		
+    </main>
+</body>
+</html>
