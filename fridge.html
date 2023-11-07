@@ -9,44 +9,97 @@
 	
 	<style>
 	
-	body {
-		background-color: lightblue;
-		color: black; 
-    }
-	div {
-		border: solid black;
-		border-width: 10x;
-		padding: 2px;
-		margin-top: 10px;
-		margin-bottom: 10px;
-		width: "400";
-		float: left;
-	}
-	.fullWidth {
-		width: 100%;
-	}
+		#div1, #div2, #div3 {
+            width: 33%;
+            height: 350px;
+            background-color: grey;
+            display: inline-table;
+			float: right;
+			text-align: center;
+
+		}
+
+        #bottom-container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #small-division {
+            width: 33%;
+            height: 300px;
+            background-color: #ccc;
+        }
+
+        #long-division {
+            width: 66%;
+            height: 300px;
+            background-color: #ddd;
+        }
+	
+		body {
+			background-color: lightblue;
+			color: black; 
+		}
+		
+		.center {
+			text-align: center;
+		}
 
 
 	</style>
 	
 	<script>
 		
+		let hourFormat = true;
+		
 		function doStartClock() 
 		{
 			setInterval(doClockTick, 1000);
 			document.getElementById('button1').style.backgroundColor="red";
-
+			updateTemp();
 		}
 		
 		function doClockTick(){
-			var currentDate = new Date();
-			var hours = currentDate.getHours();
-			var mins = currentDate.getMinutes();
-			var secs = currentDate.getSeconds();
-			var timeString = hours+":"+mins+":"+secs;
+			if (hourFormat == true){
+				var currentDate = new Date();
+				var hours = currentDate.getHours();
+				var mins = currentDate.getMinutes();
+				var secs = currentDate.getSeconds();
+				hours = hours < 10 ? "0" + hours : hours;
+				mins = mins < 10 ? "0" + mins : mins;
+				secs = secs < 10 ? "0" + secs : secs;
+				var timeString = hours + ":" + mins + ":" + secs
+			}
+			else {
+				var currentDate = new Date();
+				var hours = currentDate.getHours();
+				var mins = currentDate.getMinutes();
+				var secs = currentDate.getSeconds();
+				var ampm = hours >= 12 ? "PM" : "AM";
+
+				hours = hours % 12;
+				hours = hours || 12;
+
+				hours = hours < 10 ? "0" + hours : hours;
+				mins = mins < 10 ? "0" + mins : mins;
+				secs = secs < 10 ? "0" + secs : secs;
+
+				var timeString = hours + ":" + mins + ":" + secs + " " + ampm;
+			}
 			
 			var outputElement = document.getElementById("timePar");
 			outputElement.textContent=timeString;
+		}
+		
+		function changeTime() {
+			if (hourFormat == true){
+				hourFormat = false;
+				setInterval(doClockTick, 1000);
+			}
+			else
+				hourFormat = true;
+				setInterval(doClockTick, 1000);
 		}
 		
 		function button1(){
@@ -75,24 +128,77 @@
 			}
 		}
 		
-		function button3(){
+		function Netflix(){
 			var screen = document.getElementById('screen');
-			but3 = document.getElementById("button3");
-			if (but3.value == "Google") {
-				but3.value = "Netflix";
-				screen.src = "https://lh3.googleusercontent.com/8cj2t0NPTyvyqZIAGOwIPvUtthyQElUJUPi1WkQkbCxvp5nkIQz8yu2My5I-W8c_D0GUnkUVq-wmNSbKR_v5XCC0SWcHfVtbmz6IEA=w512-l90-sg-rj-c0xffffff";
-			}
-			else {
-					but3.value = "Google";
-					screen.src = "https://upload.wikimedia.org/wikipedia/en/f/f4/Netflix_-_English.jpg";
-			}
+			screen.src = "https://upload.wikimedia.org/wikipedia/en/f/f4/Netflix_-_English.jpg";
 		}
 		
+		function Google(){
+			var screen = document.getElementById('screen');
+			screen.src = "https://lh3.googleusercontent.com/8cj2t0NPTyvyqZIAGOwIPvUtthyQElUJUPi1WkQkbCxvp5nkIQz8yu2My5I-W8c_D0GUnkUVq-wmNSbKR_v5XCC0SWcHfVtbmz6IEA=w512-l90-sg-rj-c0xffffff";
+		}
+		
+		
+		
+		function Spotify(){
+			var screen = document.getElementById('screen');
+			var audio = new Audio();
+			audio.src = "https://prosearch.tribeofnoise.com/artists/show/32965/23971";
+			audio.play();
+			screen.src = "https://storage.googleapis.com/pr-newsroom-wp/1/2021/03/Explore-new-filters-in-Library-768x432.png";
+		}
+		
+		function audioPlay(audioUrl) {
+            audioSource.src = audioUrl;
+        }
+		
+		let currentTemperature = generateRandomTemperature();
+		let isFahrenheit = true;
+		
+		function generateRandomTemperature() {
+        return Math.floor(Math.random() * (100 - 32 + 1) + 32);
+		}
+
+		function updateTemp() {
+			document.getElementById("temperatureDisplay").innerHTML = `${currentTemperature} ${isFahrenheit ? '°F' : '°C'}`;
+		}
+
+		function toggleTemperatureUnit() {
+			isFahrenheit = !isFahrenheit;
+			var unitSwitchButton = document.getElementById("tempUnitSwitch");
+			unitSwitchButton.textContent = isFahrenheit ? "Switch to °C" : "Switch to °F";
+			updateTemp();
+		}
+
+		function increaseTemp() {
+			currentTemperature += 1;
+			updateTemp();
+		}
+
+		function decreaseTemperature() {
+			currentTemperature -= 1;
+			updateTemp();
+		}
+		
+		function addItem() {
+            var newItemInput = document.getElementById('new-item');
+            var newItemText = newItemInput.value.trim();
+
+            if (newItemText !== '') {
+                var shoppingList = document.getElementById('shopping-list');
+                var newItem = document.createElement('li');
+                newItem.textContent = newItemText;
+                shoppingList.appendChild(newItem);
+                newItemInput.value = '';
+            }
+        }
+
+		
+			
 	</script>
 
 	
-<body onload="doStartClock();">
-	
+	<body onload="doStartClock();">
 	
 	
         <div id="div1">
@@ -101,37 +207,57 @@
 		
         <div id="div2">
 			<img class="trans" id="screen" src="https://lh3.googleusercontent.com/8cj2t0NPTyvyqZIAGOwIPvUtthyQElUJUPi1WkQkbCxvp5nkIQz8yu2My5I-W8c_D0GUnkUVq-wmNSbKR_v5XCC0SWcHfVtbmz6IEA=w512-l90-sg-rj-c0xffffff"			
-			id="image1" width=300px height=300px>
+			id="image1" width=400px height=300px>
        </div>
-		
-		<p style="clear:left;">
-		
+				
         <div id="div3">
-			<p>|	39° F	|</p>
-
+			<img class="trans" id="screen" src="https://gray-wtok-prod.cdn.arcpublishing.com/resizer/3hemdmU7wNPLM3G3GU3WNUwTF18=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/VASEXU5K75D6XO7WA6GFLFGMY4.png"			
+			id="image1" width=400px height=200px>
+			<p id="weather"> Weather: Partly Cloudy </p>
+			<p id="temperatureDisplay"></p>
+			<button id="tempUnitSwitch" onclick="toggleTemperatureUnit()">Switch to °C</button>
+			<button id="temperature-increase" onclick="increaseTemp()">+</button>
+			<button id="temperature-decrease" onclick="decreaseTemperature()">-</button>
        </div>
+		
+		
 
-        <div id="div4">
-			<p id="timePar" style="font-size:1em; font-family: 'Courier New', Courier, monospace; text-align: center;">00:00:00</p>
-
-
-       </div>
+		<div class="center" id="bottom-container">
+			<div id="small-division">
+				<img id="clock" src="https://www.muji.us/cdn/shop/products/4550344275733_org_1024x1024.jpg?v=1678206891"			
+				id="image1" width=200px height=200px>
+				<p id="timePar" style="font-size:1em; font-family: 'Courier New', Courier, monospace; text-align: center;">00:00:00</p>
+				<input type=button onclick="changeTime()" id="timeButton" value="12/24 hr">
+			</div>
+			
+			<div id="long-division">
+				<input type=button onclick="button1()" id="button1" value="On" background-color:"green">
+				<input type=button onclick="button2()" id="button2" value="Open Fridge">
+				<input type=button onclick="Netflix()" id="button3" value="Netflix">
+				<input type=button onclick="Google()" id="button4" value="Google">
+				<input type=button onclick="Spotify()" id="button5" value="Spotify">
+				
+				<h1>Shopping List</h1>
+				<ul id="shoppingList">
+					<li> Bananas </li>
+					<li> Avocados </li>
+					<li> Cheese </li>
+					<li> Ketchup </li>
+					<li> Pickles </li>
+				</ul>
+				<input type="text" id="new-item" placeholder="Add an item">
+				<button id="add-item" onclick="addItem()">Add</button>
+			</div>
+		</div>
 		
 
 	   		<p style="clear:left;">
-
-	   
-		<div id="buttons" class="fullWidth">
-			<input type=button onclick="button1()" id="button1" value="On" background-color:"green">
-			<input type=button onclick="button2()" id="button2" value="Open Fridge">
-			<input type=button onclick="button3()" id="button3" value="Netflix">
-       </div>
 		
 		
 		
 	<footer>
 			<hr>
-			<small> &copy; W. DeTorres October 16, 2023 </small>
+			<small> &copy; W. DeTorres November 6, 2023 </small>
 	</footer>
 		
     </main>
