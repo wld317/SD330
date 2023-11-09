@@ -1,1 +1,45 @@
-<h1> Hello World </h1>
+<!DOCTYPE HTML>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>	Filelist </title>
+	</head>
+	
+	<script>
+	
+    function githubFilelist(){
+				
+		var htmlString = "";
+	
+	  // this creates JS object 'data' with a list of files  
+          // change "aptokash/SD330" to your github id and repository name 
+		(async () => {
+			const response = await fetch("https://api.github.com/repos/wld317/SD330/contents/");
+			const data = await response.json();
+    	
+	  // loop through the list of files, set "file" to each file name
+    		for (let file of data) {
+				
+				fname = file.name;           
+				fpath = "https://wld317.github.io/SD330/" + fname;  
+				
+				htmlString += "<p>" + fname ;
+				htmlString += "<p>" + fpath ;
+			}
+        
+		document.getElementById('files').innerHTML = htmlString;
+		})()
+	}
+	
+	
+	</script>
+
+	<hr>
+		<footer>
+			(c) W. DeTorres - 11/8/2023
+		</footer>
+
+
+</body>
+</html>
