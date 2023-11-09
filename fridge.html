@@ -58,6 +58,7 @@
 			setInterval(doClockTick, 1000);
 			document.getElementById('button1').style.backgroundColor="red";
 			updateTemp();
+			hideImagesOnStartup();
 		}
 		
 		function doClockTick(){
@@ -102,17 +103,28 @@
 				setInterval(doClockTick, 1000);
 		}
 		
-		function button1(){
-			but1 = document.getElementById("button1");
+		function button1() {
+			var but1 = document.getElementById("button1");
+			var images = document.querySelectorAll('.trans');
+
 			if (but1.value == "On") {
 				but1.value = "Off";
-				document.getElementById('button1').style.backgroundColor="green";
+				but1.style.backgroundColor = "green";
+
+				// Show images when button1 is On
+				images.forEach(function (image) {
+					image.style.display = 'block';
+				});
+			} else {
+				but1.value = "On";
+				but1.style.backgroundColor = "red";
+
+				// Hide images when button1 is Off
+				images.forEach(function (image) {
+					image.style.display = 'none';
+				});
 			}
-			else {
-					but1.value = "On";
-					document.getElementById('button1').style.backgroundColor="red";
-			}
-		}	
+		}
 		
 		
 		function button2(){
@@ -175,7 +187,7 @@
 			updateTemp();
 		}
 
-		function decreaseTemperature() {
+		function decreaseTemp() {
 			currentTemperature -= 1;
 			updateTemp();
 		}
@@ -192,7 +204,32 @@
                 newItemInput.value = '';
             }
         }
+		
+		
+		var countdown;
+		
+		function startTimer() {
+			var audio = new Audio('alarm.mp3');
+			var seconds = 60;
+			var timerValueElement = document.getElementById('timerPar');
+			countdown = setInterval(function () {
+			seconds--;
+			timerValueElement.textContent = seconds;
 
+			if (seconds <= 0) {
+			  clearInterval(countdown);
+			  audio.play();
+			  timerValueElement.textContent = "0";
+			}
+		  }, 1000);
+		}
+
+		function hideImagesOnStartup() {
+			var images = document.querySelectorAll('.trans');
+			images.forEach(function (image) {
+				image.style.display = 'none';
+			});
+		}
 		
 			
 	</script>
@@ -216,8 +253,8 @@
 			<p id="weather"> Weather: Partly Cloudy </p>
 			<p id="temperatureDisplay"></p>
 			<button id="tempUnitSwitch" onclick="toggleTemperatureUnit()">Switch to °C</button>
-			<button id="temperature-increase" onclick="increaseTemp()">+</button>
-			<button id="temperature-decrease" onclick="decreaseTemperature()">-</button>
+			<button id="temperatureIncrease" onclick="increaseTemp()">+</button>
+			<button id="temperatureDecrease" onclick="decreaseTemp()">-</button>
        </div>
 		
 		
@@ -227,7 +264,9 @@
 				<img id="clock" src="https://www.muji.us/cdn/shop/products/4550344275733_org_1024x1024.jpg?v=1678206891"			
 				id="image1" width=200px height=200px>
 				<p id="timePar" style="font-size:1em; font-family: 'Courier New', Courier, monospace; text-align: center;">00:00:00</p>
+				<p id="timerPar" style="font-size:1em; font-family: 'Courier New', Courier, monospace; text-align: center;">60</p>
 				<input type=button onclick="changeTime()" id="timeButton" value="12/24 hr">
+				<input type=button onclick="startTimer()" id="timerButton" value="Activate timer">			
 			</div>
 			
 			<div id="long-division">
@@ -238,7 +277,7 @@
 				<input type=button onclick="Spotify()" id="button5" value="Spotify">
 				
 				<h1>Shopping List</h1>
-				<ul id="shoppingList">
+				<ul id="shopping-list">
 					<li> Bananas </li>
 					<li> Avocados </li>
 					<li> Cheese </li>
