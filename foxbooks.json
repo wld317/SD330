@@ -1,0 +1,204 @@
+
+{
+  "courses": [
+    {
+      "course_name": "Introduction to Computer Science",
+      "course_code": "CMSC101",
+      "instructor": "Dr. Comp",
+      "credits": 3,
+      "schedule": "MWF 10:00 AM - 11:30 AM",
+      "location": "Room 102",
+      "books": [
+        {
+          "book_title": "Computer Science For Dummies",
+          "author": "Ed Ucator",
+          "price": "$20.99",
+          "publisher": "IDG and Wiley",
+          "edition": 3
+        },
+        {
+          "book_title": "How to Code 101",
+          "author": "Colin Ode",
+          "price": "$54.99",
+          "publisher": "No Starch Press",
+          "edition": 2
+        }
+      ]
+    },
+	
+    {
+      "course_name": "Calculus I",
+      "course_code": "MATH241",
+      "instructor": "Prof. Matthew",
+      "credits": 4,
+      "schedule": "TTH 9:00 AM - 10:30 AM",
+      "location": "Room 202",
+      "books": [
+        {
+          "book_title": "Calculus",
+          "author": "Cal Culus",
+          "price": "$40.99",
+          "publisher": "Math Learning",
+          "edition": 7
+        },
+        {
+          "book_title": "Calculus for Beginners",
+          "author": "Colin Cruelus",
+          "price": "$32.99",
+          "publisher": "Education Education",
+          "edition": 6
+        }
+      ]
+    },
+	
+	{
+      "course_name": "System Design",
+      "course_code": "CMPT 330",
+      "instructor": "Prof. Tokash ",
+      "credits": 4,
+      "schedule": "MTH 12:30 PM - 1:45 PM",
+      "location": "Room 2017",
+      "books": [
+        {
+          "book_title": "Interactive Design: Beyond Human Computer interaction",
+          "author": "Helen Sharp, Jennifer Preece, and Yvonne Rogers",
+          "price": "$34.99",
+          "publisher": "John Wiley & Sons",
+          "edition": 5
+        },
+        {
+          "book_title": "Designing Designs",
+          "author": "Derek Ziner",
+          "price": "$40.99",
+          "publisher": "Designers Designers Designers",
+          "edition": 2
+        }
+      ]
+    },
+	
+	{
+      "course_name": "English",
+      "course_code": "ENGL101",
+      "instructor": "Prof. Red",
+      "credits": 3,
+      "schedule": "TTH 3:30 PM - 4:45 PM",
+      "location": "Room 114",
+      "books": [
+        {
+          "book_title": "The Hound of the Baskervilles",
+          "author": "Arthur Conan Doyle",
+          "price": "$9.99",
+          "publisher": "Penguin Classics",
+          "edition": 2
+        },
+        {
+          "book_title": "Moonstone",
+          "author": "Wilkie Collins",
+          "price": "$9.99",
+          "publisher": "Penguin Classics",
+          "edition": 1
+        }
+      ]
+    },
+	
+	{
+      "course_name": "Introduction to Media Studies",
+      "course_code": "MDIA101",
+      "instructor": "Prof. Thomas",
+      "credits": 3,
+      "schedule": "M 6:30 PM - 9:00 PM",
+      "location": "Room 006",
+      "books": [
+        {
+          "book_title": "The Raiders of the Deep",
+          "author": "Lowell Thomas",
+          "price": "$12.99",
+          "publisher": "Doubleday Doran",
+          "edition": 1
+        },
+        {
+          "book_title": "With Lawrence in Arabia",
+          "author": "Lowell Thomas",
+          "price": "$11.99",
+          "publisher": "Garden City Publishing",
+          "edition": 1
+        }
+      ]
+    },
+	
+	{
+      "course_name": "Writing for Media",
+      "course_code": "MDIA201",
+      "instructor": "Prof. Tarantino",
+      "credits": 3,
+      "schedule": "F 9:00 AM - 10:45 AM",
+      "location": "Room 228",
+      "books": [
+        {
+          "book_title": "Writing for Visual Media",
+          "author": "Anthony Friedman",
+          "price": "$54.99",
+          "publisher": "Routledge",
+          "edition": 5
+        },
+        {
+          "book_title": "Cinema Speculation",
+          "author": "Quentin Tarantino",
+          "price": "$21.99",
+          "publisher": "Harper",
+          "edition": 1
+        }
+      ]
+    },
+	
+	{
+      "course_name": "Video Production",
+      "course_code": "MDIA203",
+      "instructor": "Prof. Coppola",
+      "credits": 3,
+      "schedule": "MTH 2:00 PM - 3:15 PM",
+      "location": "Room 227",
+      "books": [
+        {
+          "book_title": "The Film Experience",
+          "author": "Timothy Corrigan, Patricia White",
+          "price": "$42.99",
+          "publisher": "Bedford/St. Martin's",
+          "edition": 3
+        },
+        {
+          "book_title": "Video Production Techniques: Theory and Practice from Concept to Screen",
+          "author": " Donald Diefenbach, Anne Slatton",
+          "price": "$61.99",
+          "publisher": "Routledge",
+          "edition": 2
+        }
+      ]
+    },
+	
+	{
+      "course_name": "Conspiracy Theories in U.S. History",
+      "course_code": "MDIA1000",
+      "instructor": "Prof. Professorson",
+      "credits": 3,
+      "schedule": "T 9:00 PM - 11:00 PM",
+      "location": "Room 0",
+      "books": [
+        {
+          "book_title": "A Sense of Community",
+          "author": "Ann-Gee Lee",
+          "price": "$29.99",
+          "publisher": "McFarland",
+          "edition": 1
+        },
+        {
+          "book_title": "Time Desk: The Chronicles of Dean Dangerous",
+          "author": "Craig Pelton",
+          "price": "$1.99",
+          "publisher": "Craig Pelton",
+          "edition": 1
+        }
+      ]
+    },
+  ]
+}
